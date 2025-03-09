@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weblogic-web-app xmlns="http://xmlns.oracle.com/weblogic/weblogic-web-app">
+    <context-root>/</context-root>
+    <jsp-descriptor>
+        <page-check-seconds>5</page-check-seconds>
+    </jsp-descriptor>
+    <container-descriptor>
+        <servlet-reload-check-secs>5</servlet-reload-check-secs>
+        <resource-reload-check-secs>5</resource-reload-check-secs>
+    </container-descriptor>
+    <fast-swap>
+        <enabled>true</enabled>
+    </fast-swap>
+</weblogic-web-app>

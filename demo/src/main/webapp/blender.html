@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blender Servlet SSE</title>
+</head>
+<body>
+    <h1>루프별 소요 시간</h1>
+    <div id="output"></div>
+
+    <script>
+        if (!!window.EventSource) {
+            var eventSource = new EventSource("/blender");
+
+            eventSource.onmessage = function (event) {
+                // 받은 메시지를 화면에 추가
+                var newElement = document.createElement("div");
+                newElement.innerText = event.data;
+                document.getElementById("output").appendChild(newElement);
+            };
+
+            eventSource.onerror = function() {
+                console.log("SSE 연결 오류 발생");
+                eventSource.close();
+            };
+        } else {
+            document.getElementById("output").innerText = "SSE를 지원하지 않는 브라우저입니다.";
+        }
+    </script>
+</body>
+</html>
